@@ -1,13 +1,12 @@
-version: "3.8"
+version: '3.9'
 
 services:
   pomodoro:
-    build: .
-    container_name: pomodoro-app
+    image: pomodoro-app:latest
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.pomodoro.rule=Host(`pomodoro.chbenjum.xyz`)"
       - "traefik.http.routers.pomodoro.entrypoints=websecure"
+      - "traefik.http.routers.pomodoro.rule=Host(`pomodoro.chbenjum.xyz`)"
       - "traefik.http.routers.pomodoro.tls.certresolver=letsencrypt"
     networks:
       - traefik
